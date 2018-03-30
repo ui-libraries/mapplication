@@ -4,7 +4,7 @@
   "description": "online map generator",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start":"http-server ./dist"
   },
   "author": "Digital Scholarship & Publishing Studio",
   "license": "MIT",
@@ -16,6 +16,7 @@
     "lodash": "^4.17.5"
   },
   "devDependencies": {
+    "http-server": "^0.11.1",
     "webpack": "^4.4.1",
     "webpack-cli": "^2.0.13"
   }
