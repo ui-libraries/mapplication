@@ -1,25 +1,41 @@
 const _ = require('lodash')
 const csv2geojson = require('csv2geojson')
 const L = require('leaflet')
+let JSZip = require('jszip')
+let FileSaver = require('file-saver');
+window.jQuery = window.$ = require('jquery')
 
 let button = document.querySelector("#csv-file + button")
+let download = document.getElementById("downloadButton")
 let input = document.getElementById("csv-file")
 let display = document.getElementById("DisplayText")
 let text = null
 
 input.addEventListener("change", addDoc)
 button.addEventListener("click", handleText)
+download.addEventListener("click", downloadMap)
+
+function downloadMap() {
+  let contents = $("#mapContainer").contents()
+  let zip = new JSZip()
+  zip.file("Hello.txt", "Hello World\n")
+  zip.generateAsync({type:"blob"})
+  .then(function(content) {
+      // see FileSaver.js
+      FileSaver.saveAs(content, "example.zip")
+  })
+}
 
 function addDoc(event) {
   let file = this.files[0]
   let reader = new FileReader()
 
-  reader.onload = function(e) {
+  reader.onload = function (e) {
     text = reader.result
     button.removeAttribute("disabled")
   }
 
-  reader.onerror = function(err) {
+  reader.onerror = function (err) {
     console.log(err, err.loaded, err.loaded === 0, file)
     button.removeAttribute("disabled")
   }
@@ -30,7 +46,7 @@ function addDoc(event) {
 function buildMap(geojson) {
   let mapData = geojson
 
-  let map = L.map('map').setView([41.6608501,-91.5305475], 13)
+  let map = L.map('map').setView([41.6608501, -91.5305475], 13)
 
   L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
     maxZoom: 18,
@@ -44,7 +60,7 @@ function buildMap(geojson) {
     let popupContent
 
     if (feature.properties && feature.properties.popupContent) {
-      popupContent = '<strong>' + feature.properties.description + '</strong><br>' + feature.properties.popupContent 
+      popupContent = '<strong>' + feature.properties.description + '</strong><br>' + feature.properties.popupContent
     }
 
     layer.bindPopup(popupContent);
@@ -59,16 +75,15 @@ function buildMap(geojson) {
       return false
     },
     onEachFeature: onEachFeature
-  }).addTo(map)
+  }).addTo(map)  
 }
 
 function handleText() {
-  csv2geojson.csv2geojson(text, function(err, data) {
+  csv2geojson.csv2geojson(text, function (err, data) {
     display.textContent = JSON.stringify(data, null, 4)
     buildMap(data)
   })
-  
+
   button.setAttribute("disabled", "disabled")
   text = null
 }
-
