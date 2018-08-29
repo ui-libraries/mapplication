@@ -92,7 +92,7 @@ CC BY-NC-SA
 	  
 //here I use an esri tiled WMS layer, a tiled layer out on mapbox, and a GeoServer tiled map service. This is really for my own reference... PS the commas and "names = " stuff replaces variables. You call up all the layers in one spot
 	  //These options should be in the boilerplate? But the actual variable selected becomes the $basemap brought into the map (e.g. if user picks "grayscale" then $basemap = var grayscale)
-	 var blanktile =  L.esri.tiledMapLayer({url: "https://gis.lib.uiowa.edu/gislib1/rest/services/williammorris/florencebasemaps2/MapServer"}),
+	 var blanktile =  L.esri.tiledMapLayer({url: "https://services.arcgisonline.com/arcgis/rest/services/Ocean/World_Ocean_Base/MapServer"}),
 	 grayscale = L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoicmNzaGVwYXJkIiwiYSI6IjYwYjI0NzdmNDQwM2YzNTc1ODI2NWZhNTU1ZTVmNjY4In0.ct_UnOxwtV_WIGwzyG0Rxw', {id: 'mapbox.light', attribution: mbAttr}),
 	 dark = L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoicmNzaGVwYXJkIiwiYSI6IjYwYjI0NzdmNDQwM2YzNTc1ODI2NWZhNTU1ZTVmNjY4In0.ct_UnOxwtV_WIGwzyG0Rxw', {id: 'mapbox.dark', attribution: mbAttr}),
 	 opengeo = L.tileLayer.wms('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {maxZoom:19, attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'}),
@@ -122,9 +122,11 @@ CC BY-NC-SA
 	 
       var map = L.map('map', {
 	  center: [$centerlat, $centerlong],
-	  zoom: $zoom,
+	  zoom: 2
 	  layers: [$basemap] 
 	  });
+	  
+
 
       // original open street maps tiles, remove above few lines and uncomment these
       /*L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
@@ -137,7 +139,7 @@ CC BY-NC-SA
         if (feature.properties) {
           var prop = feature.properties;
           // make html popup with properties. This example allows up to 3 text fields (1 title), a URL field, and a Photo, if included in the
-            var popup = '<h3>'+prop['$FIELD1']'</h3>'+'$FIELD2: '+prop['$FIELD2']+'<br>'+'FIELD3: '+prop['FIELD3']+'<br>'+'Reason lost: '+prop['REASON']+'<br><strong>Link to Story: </strong><a href='+prop['LINKFIELD']+'>'+prop['LINKFIELD']+'</a><br>'+'<img src='+prop['PHOTOFIELD']+' height=\"300\" width=\"300\">';
+            var popup = '<h3>'+prop['$FIELD1']'</h3>'+'$FIELD2: '+prop['$FIELD2']+'<br>'+'FIELD3: '+prop['FIELD3']+'<br>'+'Reason lost: '+prop['REASON']+'<br><strong>Link to Story: </strong><a href='+prop['LINKFIELD']+'>'+prop['LINKFIELD']+'</a><br>'+'<img src='+' height=\"300\" width=\"300\">';
             // add known info about event to the description
           
           // you must create a layer property on each feature or else
@@ -147,7 +149,7 @@ CC BY-NC-SA
         }
       }; // end onEachFeature
 
-      // Defining various types of marker colors here. Example: If user picks "red" for a layer, the variable will be set to "redCircleMarkers"
+      // Defining various types of marker colors here. Example: If user picks "red" for a layer, the variable will be set to "redCircleMarkers". Circlemarkers is left for semi-transparent/ search layers
       var blueCircleMarkers = {
         radius: 7,
         fillColor: "#00AEEF",
@@ -157,7 +159,7 @@ CC BY-NC-SA
         fillOpacity: 0.5
       };
 	  
-	   var CircleMarkers = {
+	  var CircleMarkers = {
         radius: 7,
         fillColor: "#000000",
         color: "#000000",
@@ -166,7 +168,6 @@ CC BY-NC-SA
         fillOpacity: 0.1
       };
 
-      // used by the timesliding layer
       var redCircleMarkers = {
         radius: 7,
         fillColor: "#ED1C24",
@@ -225,10 +226,11 @@ CC BY-NC-SA
       var searchLayer = L.geoJson($mainlayer, {
         onEachFeature: onEachFeature,
         pointToLayer: function(feature, latlng) {
-          return L.circleMarker(latlng, greenCircleMarkers);
+          return L.circleMarker(latlng, CircleMarkers);
         }
       });
-      // searchLayer.addTo(map);
+	  
+       searchLayer.addTo(map);
 
       // create the slider   - REMOVED
       var sliderControl = L.control.sliderControl({
@@ -307,18 +309,18 @@ CC BY-NC-SA
 	 var $mainlayer = new L.geoJson($mainlayer, {
 	  onEachFeature: onEachFeature,
 pointToLayer: function (feature, latlng) {
-        return L.circleMarker(latlng, CircleMarkers);
+        return L.circleMarker(latlng, $markercolor);
     }}).addTo(map);
+	
+	  var bounds = L.latLngBounds($mainlayer);
+      map.fitBounds($mainlayer.getBounds());
 	  
 //	  		var baseLayers = {
 //			"Dark": grayscale
 //		};
 	  
 	  		var overlays = {
-			"$mainlayer": $mainlayer,
-			"$secondlayer": $secondlayer,
-			"$thirdlayer": $thirdlayer,
-			"$fourthlayer": $fourthlayer
+			"$mainlayer": $mainlayer
 	  };
 	  
 			var baseMaps = {
