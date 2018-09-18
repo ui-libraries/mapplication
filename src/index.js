@@ -15,14 +15,27 @@ input.addEventListener("change", addDoc)
 button.addEventListener("click", handleText)
 download.addEventListener("click", downloadMap)
 
-function downloadMap() {
+function createDoc(title) {
+  let returnString
   let contents = $("#mapContainer").contents()
+  let doc = document.implementation.createHTMLDocument(title)
+  let link = doc.createElement('link')  
+  link.rel = 'stylesheet';
+  link.href = 'https://unpkg.com/leaflet@1.3.1/dist/leaflet.css'
+  $(doc.head).append(link)
+  $(doc.body).append(contents)
+  returnString = new XMLSerializer().serializeToString(doc)
+  return returnString
+}
+
+function downloadMap() {
+  let html = createDoc("test doc")
   let zip = new JSZip()
-  zip.file("Hello.txt", "Hello World\n")
+  zip.file("index.html", html)
   zip.generateAsync({type:"blob"})
   .then(function(content) {
       // see FileSaver.js
-      FileSaver.saveAs(content, "example.zip")
+      FileSaver.saveAs(content, "map.zip")
   })
 }
 
