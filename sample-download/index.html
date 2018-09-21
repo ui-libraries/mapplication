@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<!-- 
+MAPPLICATION development team is:
+Rob Shepard, GIS Specialist; Matthew Butler, Senior Developer; Ethan Degross, Researcher/Developer
+
+University of Iowa Libraries Digital Scholarship and Publishing Studio
+This work is released under Creative Commons Attribution-NonCommercial-ShareAlike License 2018
+CC BY-NC-SA
+
+-->
+<html>
+  <head>
+    <title>$title</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- INCLUDES -->
+      <!-- include leaflet / slider css, js local files -->
+      <script src="https://cdn.jsdelivr.net/leaflet/1.0.0-rc.3/leaflet-src.js"></script>
+      <link rel="stylesheet" href="public/leaflet-1/leaflet.css" />
+	  <!--OLD LINK IS HERE - <link rel="stylesheet" href="https://cdn.jsdelivr.net/leaflet/1.0.0-rc.3/leaflet.css" /> -->
+      <script src="public/leafletSlider-1.0.2/leaflet.SliderControl.min.js"></script>
+      <!-- include a pretty little stamenizer -->
+      <script type="text/javascript" src="http://maps.stamen.com/js/tile.stamen.js?v1.3.0"></script>
+      <!-- Add Fuse code first, then add the leaflet plugins that use fuse searching -->
+      <script src="public/fuse-1.2.1/fuse.min.js"></script>
+      <script src="public/leafletFuseSearch-noVersion/leafletfuse.js"></script>
+      <link rel="stylesheet" href="public/leafletFuseSearch-noVersion/leafletfuse.css" type="text/css"/>
+      <!-- jquery and css -->
+      <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+      <script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+      <link rel="stylesheet" href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css" type="text/css">
+      <!-- Include this library for mobile touch support -->
+      <script src="public/jqueryUiTouchPunch-0.2.2/jquery.ui.touch-punch.min.js"></script>
+	    <!-- Load Esri Leaflet from CDN -->
+    <script src="https://cdn.jsdelivr.net/leaflet.esri/2.0.2/esri-leaflet.js"></script>
+
+
+
+	  <link rel="stylesheet" type="text/css" href="style.css">
+	  <link rel="stylesheet" type="text/css" href="navwrap.css">
+	  	  <style type="text/css">
+	  
+	    #map {
+            width: 100%;
+            height: 100%;
+			left: 1px;
+
+			position: absolute;
+        }
+
+		</style>
+  </head>
+  <body>
+ 
+    <!-- provide the map with a div to live inside -->
+    <div id="map" style="width: 100%; height: 900px; position: absolute"></div>
+  </body>
+        <!-- JSON points referneced here - supports up to four layers now but we'll probably expand-->
+        <script src="config.js"></script>
+        <script src="user.js"></script>
+        <script src="index.js"></script>
+</html>
