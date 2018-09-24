@@ -5,8 +5,9 @@ const mainlayerJson = {
         {
             "type": "Feature",
             "properties": {
-                "description": "me",
-                "popupContent": "what"
+                "description": "Spacious, 4-bedroom home on the Westside",
+                "popupContent": "look at this amazing home!",
+                "image": "<img src='https://i.imgur.com/KbwPb6Y.jpg'>"
             },
             "geometry": {
                 "type": "Point",
@@ -19,8 +20,9 @@ const mainlayerJson = {
         {
             "type": "Feature",
             "properties": {
-                "description": "you",
-                "popupContent": "foo"
+                "description": "Cozy efficiency apartment",
+                "popupContent": "For the student on a budget!",
+                "image": "<img src='https://i.imgur.com/g0RGSwW.jpg'>"
             },
             "geometry": {
                 "type": "Point",

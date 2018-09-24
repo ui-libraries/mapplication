@@ -21,10 +21,14 @@ function onEachFeature(feature, layer) {
     let props = feature.properties
     let popup = ''
     let featureNames = Object.keys(props)
-    featureNames.forEach(function(element) {
-      popup += `${props[element]}`
-      popup += `<br>`
-    })
+    for (let i = 0, len = featureNames.length; i < len; i++) {
+      if (i === 0) {
+        popup += `<h2>${props[featureNames[i]]}</h2>`
+      } else {
+        popup += `${props[featureNames[i]]}`
+        popup += `<br>`
+      }      
+    }
 
     feature.layer = layer
     layer.bindPopup(popup, {
@@ -117,8 +121,6 @@ let baseMaps = {
 L.control.layers(baseMaps, overlays, {
   collapsed: false
 }).addTo(map)
-
-console.log(mainlayerName)
 
 let searchControl = L.control.fuseSearch(searchOptions)
 map.addControl(searchControl)

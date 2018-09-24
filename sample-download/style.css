@@ -6,3 +6,11 @@
 	top: 0;
 	left: 0;
 }
+
+.leaflet-popup-content-wrapper {
+	width: 300px;
+}
+
+img {
+	width: 260px;
+}
