@@ -47,7 +47,7 @@ let mainlayer = new L.geoJson(mainlayerJson, {
 let timelineLayer = L.geoJson(mainlayerJson, {
   onEachFeature: onEachFeature,
   pointToLayer: function(feature, latlng) {
-    return L.circleMarker(latlng, redCircleMarkers)
+    return L.circleMarker(latlng, markercolor)
   }
 })
 
