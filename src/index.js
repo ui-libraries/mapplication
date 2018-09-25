@@ -102,7 +102,7 @@ function createUserFile() {
   let layerName = $('#layerName').val()
   return `const mainlayerJson = ${geoJson}
   const mainlayerName = '${layerName}'
-  const basemap = grayscale
+  const basemap = tileList['grayscale']
   const markercolor = {
     radius: 7,
     fillColor: '${color}',
