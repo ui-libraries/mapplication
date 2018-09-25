@@ -21,66 +21,12 @@ stamenmap = L.tileLayer('http://stamen-tiles-{s}.a.ssl.fastly.net/terrain/{z}/{x
   maxZoom: 18,
   ext: 'png'
 })
-	 
-const blueCircleMarkers = {
-  radius: 7,
-  fillColor: "#00AEEF",
-  color: "#3978BF",
-  weight: 1,
-  opacity: 0.8,
-  fillOpacity: 0.5
-}
-	  
+
 const CircleMarkers = {
   radius: 7,
   fillColor: "#000000",
   color: "#000000",
   weight: 1,
-  opacity: 0.1,
+  opacity: 0,
   fillOpacity: 0.1
-}
-
-const redCircleMarkers = {
-  radius: 7,
-  fillColor: "#ED1C24",
-  color: "#ED1C24",
-  weight: 1,
-  opacity: 1,
-  fillOpacity: 0.9
-}
-
-const purpleCircleMarkers = {
-  radius: 7,
-  fillColor: "#551a8b",
-  color: "#000000",
-  weight: 1,
-  opacity: 1,
-  fillOpacity: 0.9
-}
-
-const yellowCircleMarkers = {
-radius: 7,
-  fillColor: "#ffff00",
-  color: "#000000",
-  weight: 1,
-  opacity: 1,
-  fillOpacity: 0.9
-}
-
-const greenCircleMarkers = {
-  radius: 7,
-  fillColor: "#00cc00",
-  color: "#000000",
-  weight: 1,
-  opacity: 0.5,
-  fillOpacity: 0.5
-}   
-
-const orangeCircleMarkers = {
-  radius: 7,
-  fillColor: "#fdbb84",
-  color: "#000000",
-  weight: 1,
-  opacity: 0.8,
-  fillOpacity: 0.5
 }
