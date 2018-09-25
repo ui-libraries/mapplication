@@ -3,6 +3,35 @@ import JSZip from 'jszip'
 import * as FileSaver from 'file-saver'
 import $ from 'jquery'
 window.$ = $
+import Pickr from 'pickr-widget'
+
+let color = '#249BDD'
+let opacity = 1
+
+const pickr = Pickr.create({
+  el: '.color-picker',
+  default: '#249BDD',
+  components: {
+      preview: true,
+      opacity: true,
+      hue: true,
+      // Input / output Options
+      interaction: {
+          hex: true,
+          rgba: false,
+          hsla: false,
+          hsva: false,
+          cmyk: false,
+          input: true,
+          clear: true,
+          save: true
+      }
+  },
+  onSave(hsva, instance) {
+    color = hsva.toHEX().toString()
+    opacity = hsva.a
+}
+})
 
 let configFile, indexJsFile, indexFile, styleFile, userFile
 
@@ -22,7 +51,6 @@ $.get( "http://s-lib024.lib.uiowa.edu/mapplication/template/style.css", function
   styleFile = data
 });
 
-let button = document.querySelector("#csv-file + button")
 let download = document.getElementById("downloadButton")
 let input = document.getElementById("csv-file")
 let display = document.getElementById("DisplayText")
@@ -63,7 +91,7 @@ function addDoc(event) {
 function handleText() {
   csv2geojson.csv2geojson(text, function (err, data) {
     display.textContent = JSON.stringify(data, null, 4)
-    $('#downloadButton').css("visibility", "visible")
+    //$('#downloadButton').css("visibility", "visible")    
   })
 
   text = null
@@ -71,16 +99,17 @@ function handleText() {
 
 function createUserFile() {
   let geoJson = $('#DisplayText').val()
+  let layerName = $('#layerName').val()
   return `const mainlayerJson = ${geoJson}
-  const mainlayerName = 'Homes for Sale'
+  const mainlayerName = '${layerName}'
   const basemap = grayscale
   const markercolor = {
     radius: 7,
-    fillColor: "#ED1C24",
-    color: "#ED1C24",
+    fillColor: '${color}',
+    color: '${color}',
     weight: 1,
-    opacity: 1,
-    fillOpacity: 0.9
+    opacity: '${opacity}',
+    fillOpacity: '${opacity}'
   }
   const searchlayer = mainlayerJson`
 }
