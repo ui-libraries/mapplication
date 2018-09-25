@@ -3,10 +3,17 @@ import JSZip from 'jszip'
 import * as FileSaver from 'file-saver'
 import $ from 'jquery'
 window.$ = $
+window.jQuery = $
+require('bootstrap')
 import Pickr from 'pickr-widget'
 
 let color = '#249BDD'
 let opacity = 1
+let tileset = 'grayscale'
+
+$(".dropdown-menu li").click(function() {
+  tileset = $(this).text()
+})
 
 const pickr = Pickr.create({
   el: '.color-picker',
@@ -102,7 +109,7 @@ function createUserFile() {
   let layerName = $('#layerName').val()
   return `const mainlayerJson = ${geoJson}
   const mainlayerName = '${layerName}'
-  const basemap = tileList['grayscale']
+  const basemap = tileList['${tileset}']
   const markercolor = {
     radius: 7,
     fillColor: '${color}',
@@ -113,7 +120,6 @@ function createUserFile() {
   }
   const searchlayer = mainlayerJson`
 }
-
 
 
 
