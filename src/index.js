@@ -4,16 +4,11 @@ import * as FileSaver from 'file-saver'
 import $ from 'jquery'
 window.$ = $
 window.jQuery = $
-require('bootstrap')
 import Pickr from 'pickr-widget'
 
 let color = '#249BDD'
 let opacity = 1
 let tileset = 'grayscale'
-
-$(".dropdown-menu li").click(function() {
-  tileset = $(this).text()
-})
 
 const pickr = Pickr.create({
   el: '.color-picker',
@@ -107,6 +102,7 @@ function handleText() {
 function createUserFile() {
   let geoJson = $('#DisplayText').val()
   let layerName = $('#layerName').val()
+  let tileset = $( "#tilesets option:selected" ).text()
   return `const mainlayerJson = ${geoJson}
   const mainlayerName = '${layerName}'
   const basemap = tileList['${tileset}']

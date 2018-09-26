@@ -32,18 +32,16 @@
           <div class="color-picker"></div>
           <label for="layerName">map layer name</label>
           <input type="text" class="form-control" id="layerName" placeholder="main layer">
-          <div class="dropdown">
-            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Select Map Tiles
-            <span class="caret"></span></button>
-            <ul class="dropdown-menu">
-              <li>grayscale</li>
-              <li>dark</li>
-              <li>opengeo</li>
-              <li>stamenmap</li>
-              <li>surfer_roads</li>
-              <li>topo</li>
-            </ul>
-          </div>
+          Select map tiles:
+          <select id="tilesets">
+            <option>grayscale</option>
+            <option>dark</option>
+            <option>opengeo</option>
+            <option>stamenmap</option>
+            <option>surfer_roads</option>
+            <option>topo</option>
+          </select>
+          <br>
           <button type="button" id="downloadButton">Download Map</button>          
         </div>
       </div>
