@@ -107,7 +107,9 @@ function wrapImageLinks(geoJsonText) {
   let features = _.find(geoJsonText, (data) => {
     _.forEach(data, (val) => {
       if (val.properties !== undefined) {
-        val.properties.image = `<img src="${val.properties.image}">`
+        if (val.properties.image !== undefined) {
+          val.properties.image = `<img src="${val.properties.image}">`
+        }        
       }
     })
   })
