@@ -1,3 +1,4 @@
+import * as _ from 'lodash'
 import * as csv2geojson from 'csv2geojson'
 import JSZip from 'jszip'
 import * as FileSaver from 'file-saver'
@@ -91,12 +92,26 @@ function addDoc(event) {
 }
 
 function handleText() {
-  csv2geojson.csv2geojson(text, function (err, data) {
-    display.textContent = JSON.stringify(data, null, 4)
+  let wrappedImages
+  csv2geojson.csv2geojson(text, (err, data) => {
+    wrappedImages = wrapImageLinks(data)
+    display.textContent = JSON.stringify(wrappedImages, null, 4)
     //$('#downloadButton').css("visibility", "visible")    
   })
 
   text = null
+}
+
+function wrapImageLinks(geoJsonText) {
+  let wrapped
+  let features = _.find(geoJsonText, (data) => {
+    _.forEach(data, (val) => {
+      if (val.properties !== undefined) {
+        val.properties.image = `<img src="${val.properties.image}">`
+      }
+    })
+  })
+  return geoJsonText
 }
 
 function createUserFile() {
