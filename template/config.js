@@ -38,5 +38,14 @@ const CircleMarkers = {
   color: "#000000",
   weight: 1,
   opacity: 0,
-  fillOpacity: 0.1
+  fillOpacity: 0
+}
+
+const timeMarkers = {
+  radius: 7,
+  fillColor: "#000000",
+  color: "#000000",
+  weight: 1,
+  opacity: 1,
+  fillOpacity: 1
 }

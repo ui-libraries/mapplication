@@ -47,7 +47,7 @@ let mainlayer = new L.geoJson(mainlayerJson, {
 let timelineLayer = L.geoJson(mainlayerJson, {
   onEachFeature: onEachFeature,
   pointToLayer: function(feature, latlng) {
-    return L.circleMarker(latlng, markercolor)
+    return L.circleMarker(latlng, timeMarkers)
   }
 })
 
@@ -56,6 +56,13 @@ let searchLayer = L.geoJson(mainlayerJson, {
   pointToLayer: function(feature, latlng) {
     return L.circleMarker(latlng, CircleMarkers)
   }
+})
+
+let sliderControl = L.control.sliderControl({
+  position: 'topright',
+  layer: timelineLayer,
+  range: true,
+  alwaysShowDate: true
 })
 
 let searchOptions = {
@@ -124,4 +131,6 @@ L.control.layers(baseMaps, overlays, {
 
 let searchControl = L.control.fuseSearch(searchOptions)
 map.addControl(searchControl)
+map.addControl(sliderControl)
+sliderControl.startSlider()
 searchControl.indexFeatures(mainlayerJson.features, mapFeatures[0])
