@@ -1,3 +1,7 @@
 /* #downloadButton {
   visibility: hidden;
 } */
+
+.form-group {
+  margin-bottom: 40px;
+}
