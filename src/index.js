@@ -8,8 +8,10 @@ window.jQuery = $
 import Pickr from 'pickr-widget'
 import linkifyStr from 'linkifyjs/string'
 
-let defaultColor = '#249BDD'
-let opacity = 1
+let defaultColor = '#777777'
+let highlightColor = '#FF0089'
+let defaultOpacity = 1
+let highlightOpacity = 1
 let tileset = 'grayscale'
 
 const defaultPickr = Pickr.create({
@@ -57,8 +59,8 @@ const hightlightPickr = Pickr.create({
       }
   },
   onSave(hsva, instance) {
-    defaultColor = hsva.toHEX().toString()
-    opacity = hsva.a
+    highlightColor = hsva.toHEX().toString()
+    highlightOpacity = hsva.a
   }
 })
 
@@ -153,11 +155,19 @@ function createUserFile() {
   const basemap = tileList['${tileset}']
   const markercolor = {
     radius: 7,
-    fillColor: '${color}',
-    color: '${color}',
+    fillColor: '${defaultColor}',
+    defaultColor: '${defaultColor}',
     weight: 1,
-    opacity: '${opacity}',
-    fillOpacity: '${opacity}'
+    defaultOpacity: '${highlightColor}',
+    fillOpacity: '${defaultOpacity}'
+  }
+  const timeMarkers = {
+    radius: 7,
+    fillColor: '${highlightColor}',
+    color: '${highlightColor}',
+    weight: 1,
+    opacity: '${highlightOpacity}',
+    fillOpacity: '${highlightOpacity}'
   }
   const searchlayer = mainlayerJson`
 }
