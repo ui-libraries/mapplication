@@ -1,7 +1,59 @@
 /* #downloadButton {
   visibility: hidden;
 } */
+.well {
+border:none;
+background-color: white;
+}
 
 .form-group {
   margin-bottom: 40px;
+}
+
+.logo {
+  width: 300px;
+}
+
+.control-label {
+  margin-top: 15px;
+}
+
+#display-text {
+  width:350px;
+  height:100px;
+}
+
+/*Ethan*/
+.seo-friendly {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+}
+
+#opening-text {
+  margin-top:100px;
+}
+
+.navbar-brand img {
+ height:25px;
+ width:100px;
+}
+
+.navbar-inverse {
+ background-image: none;
+ background-color: white;
+}
+
+.pcr-button {
+  visibility: hidden;
+}
+
+.pcr-app {
+  visibility: visible;
+  opacity: inherit;
+  position: relative;
+  height: 10em!important;
+  width: 350px!important;
+  top:0px!important;
+  left:0px!important;
 }

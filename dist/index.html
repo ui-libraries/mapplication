@@ -9,11 +9,11 @@
         <title></title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="apple-touch-icon" href="apple-touch-icon.png">        
+        <link rel="apple-touch-icon" href="apple-touch-icon.png">
 
         <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons">
-        
+
         <link rel="stylesheet" href="css/pickr.min.css">
         <link rel="stylesheet" href="css/style.css">
 
@@ -22,34 +22,35 @@
         <!--[if lt IE 8]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
-    <!-- Main jumbotron for a primary marketing message or call to action -->     
-    
-
       <div class="container">
-        <h1>Mapplication</h1>
+        <img class="logo" src="logo/Mapplication_Wordmark_Color.svg">
         <div class="well">
           <form class="form">
           <div class="form-group">
-            <h4><label class="control-label" for="inputFile2">upload spreadsheet</label></h4>
+            <h4><label class="control-label" for="inputFile2">Step 1: Upload a CSV file or paste GeoJson data</label></h4>
             <input type="file" id="csv-file">
+              <p><strong><label class="control-label" for="display-text">GeoJSON:</label></strong></p>
+              <textarea id="display-text"></textarea>
+          </div>
+          <div id="map"></div>
+            <div id="mapContainer" class="container">
+            </div>
+          <div class="form-group">
+              <h4><label class="control-label" for="colorpicker">Step 2: Select a default marker color</label></h4>
+              <div id="colorpicker-default" class="color-picker"></div>
           </div>
 
           <div class="form-group">
-              <h4><label class="control-label" for="DisplayText">geoJSON:</label></h4>
-              <textarea id="DisplayText"></textarea>
+              <h4><label class="control-label" for="colorpicker">Step 3: Select a highlight marker color</label></h4>
+              <div id="colorpicker-highlight" class="color-picker"></div>
           </div>
 
-          <div class="form-group">
-              <h4><label class="control-label" for="colorpicker">Select a default marker color</label></h4>
-              <div id="colorpicker" class="color-picker"></div>
+          <div class="form-group row col-xs-3">
+              <h4><label for="layerName">Descriptive Layer Name</label></h4>
+              <input type="text" class="form-control" id="layerName" placeholder="E.g. Homes for Sale">
           </div>
 
-          <div class="form-group">
-              <h4><label for="layerName">map layer name</label></h4>
-              <input type="text" class="form-control" id="layerName" placeholder="mainlayer">
-          </div>
-          
-          <div class="form-group">
+          <div class="form-group row col-xs-3">
               <h4><label for="layerName">select map tiles</label></h4>
               <select id="tilesets">
                   <option>grayscale</option>
@@ -60,7 +61,9 @@
                   <option>topo</option>
                 </select>
           </div>
-          <button class="btn btn-raised btn-info" type="button" id="downloadButton">Download Map</button>          
+          <div class="row col-xs-12">
+          <button class="btn btn-raised btn-info " type="button" id="downloadButton">Download Map</button>
+        </div>
         </div>
       </form>
       </div>
@@ -77,5 +80,5 @@
           r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
           ga('create','UA-XXXXX-X','auto');ga('send','pageview');
       </script>
-    </body>   
+    </body>
 </html>

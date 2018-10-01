@@ -1,5 +1,5 @@
 {
-  "name": "skeleton",
+  "name": "mapplication",
   "version": "0.1.0",
   "description": "A barebones starter project for modern javascript development",
   "main": "src/index.js",
@@ -48,6 +48,7 @@
     "imports-loader": "^0.8.0",
     "jquery": "^3.3.1",
     "jszip": "^3.1.5",
+    "linkifyjs": "^2.1.7",
     "lodash": "^4.17.11",
     "pickr-widget": "^0.2.4"
   }

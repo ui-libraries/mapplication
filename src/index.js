@@ -6,14 +6,15 @@ import $ from 'jquery'
 window.$ = $
 window.jQuery = $
 import Pickr from 'pickr-widget'
+import linkifyStr from 'linkifyjs/string'
 
-let color = '#249BDD'
+let defaultColor = '#249BDD'
 let opacity = 1
 let tileset = 'grayscale'
 
-const pickr = Pickr.create({
-  el: '.color-picker',
-  default: '#249BDD',
+const defaultPickr = Pickr.create({
+  el: '#colorpicker-default',
+  default: '#777777',
   components: {
       preview: true,
       opacity: true,
@@ -31,9 +32,34 @@ const pickr = Pickr.create({
       }
   },
   onSave(hsva, instance) {
-    color = hsva.toHEX().toString()
+    defaultColor = hsva.toHEX().toString()
     opacity = hsva.a
-}
+  }
+})
+
+const hightlightPickr = Pickr.create({
+  el: '#colorpicker-highlight',
+  default: '#FF0089',
+  components: {
+      preview: true,
+      opacity: true,
+      hue: true,
+      // Input / output Options
+      interaction: {
+          hex: true,
+          rgba: false,
+          hsla: false,
+          hsva: false,
+          cmyk: false,
+          input: true,
+          clear: true,
+          save: true
+      }
+  },
+  onSave(hsva, instance) {
+    defaultColor = hsva.toHEX().toString()
+    opacity = hsva.a
+  }
 })
 
 let configFile, indexJsFile, indexFile, styleFile, userFile
@@ -56,7 +82,7 @@ $.get( "http://s-lib024.lib.uiowa.edu/mapplication/template/style.css", function
 
 let download = document.getElementById("downloadButton")
 let input = document.getElementById("csv-file")
-let display = document.getElementById("DisplayText")
+let display = document.getElementById("display-text")
 let text = null
 
 input.addEventListener("change", addDoc)
@@ -81,6 +107,9 @@ function addDoc(event) {
 
   reader.onload = function (e) {
     text = reader.result
+    //text = linkifyStr(text, {
+      //defaultProtocol: 'https'
+    //})
     handleText()
   }
 
@@ -92,10 +121,9 @@ function addDoc(event) {
 }
 
 function handleText() {
-  let wrappedImages
   csv2geojson.csv2geojson(text, (err, data) => {
-    wrappedImages = wrapImageLinks(data)
-    display.textContent = JSON.stringify(wrappedImages, null, 4)
+    wrapImageLinks(data)
+    display.textContent = JSON.stringify(data, null, 4)
     //$('#downloadButton').css("visibility", "visible")    
   })
 
@@ -117,7 +145,7 @@ function wrapImageLinks(geoJsonText) {
 }
 
 function createUserFile() {
-  let geoJson = $('#DisplayText').val()
+  let geoJson = $('#display-text').val()
   let layerName = $('#layerName').val()
   let tileset = $( "#tilesets option:selected" ).text()
   return `const mainlayerJson = ${geoJson}
