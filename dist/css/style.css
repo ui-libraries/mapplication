@@ -7,7 +7,7 @@ background-color: white;
 }
 
 .form-group {
-  margin-bottom: 40px;
+  margin-top: 40px;
 }
 
 .logo {
@@ -21,6 +21,14 @@ background-color: white;
 #display-text {
   width:350px;
   height:100px;
+}
+
+#layer-name {
+  width: 350px;
+}
+
+#highlight-group {
+  display: none;
 }
 
 /*Ethan*/
@@ -45,7 +53,7 @@ background-color: white;
 }
 
 .pcr-button {
-  visibility: hidden;
+  display: none;
 }
 
 .pcr-app {

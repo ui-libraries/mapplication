@@ -8,6 +8,8 @@ window.jQuery = $
 import Pickr from 'pickr-widget'
 import linkifyStr from 'linkifyjs/string'
 
+$('.pcr-button').remove();
+
 let defaultColor = '#777777'
 let highlightColor = '#FF0089'
 let defaultOpacity = 1
@@ -124,6 +126,7 @@ function addDoc(event) {
 
 function handleText() {
   csv2geojson.csv2geojson(text, (err, data) => {
+    removeHighlightPicker(data)
     wrapImageLinks(data)
     display.textContent = JSON.stringify(data, null, 4)
     //$('#downloadButton').css("visibility", "visible")    
@@ -146,9 +149,31 @@ function wrapImageLinks(geoJsonText) {
   return geoJsonText
 }
 
+function removeHighlightPicker(geoJsonText) {
+  if (hasTime(geoJsonText) === true) {
+    console.log('display!!')
+    $('#highlight-group').css("display", "inline")
+  }
+}
+
+function hasTime(geoJsonText) {
+  let exists = false
+  let features = _.find(geoJsonText, (data) => {
+    _.forEach(data, (val) => {
+      if (val.properties !== undefined) {
+        if (val.properties.time !== undefined) {
+          console.log('here?')
+          exists = true
+        }
+      }
+    })
+  })
+  return exists
+}
+
 function createUserFile() {
   let geoJson = $('#display-text').val()
-  let layerName = $('#layerName').val()
+  let layerName = $('#layer-name').val()
   let tileset = $( "#tilesets option:selected" ).text()
   return `const mainlayerJson = ${geoJson}
   const mainlayerName = '${layerName}'
