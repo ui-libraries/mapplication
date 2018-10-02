@@ -7,6 +7,7 @@ window.$ = $
 window.jQuery = $
 import Pickr from 'pickr-widget'
 import linkifyStr from 'linkifyjs/string'
+import { hasTime } from './lib'
 
 $('.pcr-button').remove();
 
@@ -126,6 +127,11 @@ function handleText() {
   csv2geojson.csv2geojson(text, (err, data) => {
     removeHighlightPicker(data)
     wrapImageLinks(data)
+
+    if (hasTime(data) === true) {
+      timeline = true
+    }
+
     display.textContent = JSON.stringify(data, null, 4)
   })
   text = null
@@ -149,21 +155,6 @@ function removeHighlightPicker(geoJsonText) {
   if (hasTime(geoJsonText) === true) {
     $('#highlight-group').css("display", "inline")
   }
-}
-
-function hasTime(geoJsonText) {
-  let exists = false
-  let features = _.find(geoJsonText, (data) => {
-    _.forEach(data, (val) => {
-      if (val.properties !== undefined) {
-        if (val.properties.time !== undefined) {
-          timeline = true
-          exists = true
-        }
-      }
-    })
-  })
-  return exists
 }
 
 function createUserFile() {
