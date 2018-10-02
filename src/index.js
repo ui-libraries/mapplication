@@ -15,6 +15,7 @@ let highlightColor = '#FF0089'
 let defaultOpacity = 1
 let highlightOpacity = 1
 let tileset = 'grayscale'
+let timeline = false
 
 const defaultPickr = Pickr.create({
   el: '#colorpicker-default',
@@ -111,9 +112,6 @@ function addDoc(event) {
 
   reader.onload = function (e) {
     text = reader.result
-    //text = linkifyStr(text, {
-      //defaultProtocol: 'https'
-    //})
     handleText()
   }
 
@@ -159,6 +157,7 @@ function hasTime(geoJsonText) {
     _.forEach(data, (val) => {
       if (val.properties !== undefined) {
         if (val.properties.time !== undefined) {
+          timeline = true
           exists = true
         }
       }
@@ -173,6 +172,7 @@ function createUserFile() {
   let tileset = $( "#tilesets option:selected" ).text()
   return `const mainlayerJson = ${geoJson}
   const mainlayerName = '${layerName}'
+  const timeline = ${timeline}
   const basemap = tileList['${tileset}']
   const markercolor = {
     radius: 7,

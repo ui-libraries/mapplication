@@ -145,7 +145,7 @@ L.legendControl = function(options) {
     return new L.LegendControl(options);
 }
 
-L.legendControl({position: 'bottomright'}).addTo(map)
+
 
 L.control.layers(baseMaps, overlays, {
   collapsed: false
@@ -154,5 +154,10 @@ L.control.layers(baseMaps, overlays, {
 let searchControl = L.control.fuseSearch(searchOptions)
 map.addControl(searchControl)
 map.addControl(sliderControl)
-sliderControl.startSlider()
+
+if (timeline === true) {
+  L.legendControl({position: 'bottomright'}).addTo(map)
+  sliderControl.startSlider()
+}
+
 searchControl.indexFeatures(mainlayerJson.features, mapFeatures[0])
