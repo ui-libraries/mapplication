@@ -129,9 +129,7 @@ function handleText() {
     removeHighlightPicker(data)
     wrapImageLinks(data)
     display.textContent = JSON.stringify(data, null, 4)
-    //$('#downloadButton').css("visibility", "visible")    
   })
-
   text = null
 }
 
@@ -151,7 +149,6 @@ function wrapImageLinks(geoJsonText) {
 
 function removeHighlightPicker(geoJsonText) {
   if (hasTime(geoJsonText) === true) {
-    console.log('display!!')
     $('#highlight-group').css("display", "inline")
   }
 }
@@ -162,7 +159,6 @@ function hasTime(geoJsonText) {
     _.forEach(data, (val) => {
       if (val.properties !== undefined) {
         if (val.properties.time !== undefined) {
-          console.log('here?')
           exists = true
         }
       }
