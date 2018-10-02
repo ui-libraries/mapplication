@@ -125,6 +125,28 @@ let baseMaps = {
   '<strong>Layer List</strong>': basemap
 }
 
+L.LegendControl = L.Control.extend({ 
+  onAdd: function (map) {
+
+   let div = L.DomUtil.create('div', 'info legend')
+   let labels = []
+
+   labels.push(
+    `<i style="background: ${markercolor.fillColor}"></i> inactive`,
+    `<i style="background: ${timeMarkers.fillColor}"></i> active`
+    )
+
+    div.innerHTML = labels.join('<br>')
+    return div
+  }
+});
+
+L.legendControl = function(options) {
+    return new L.LegendControl(options);
+}
+
+L.legendControl({position: 'bottomright'}).addTo(map)
+
 L.control.layers(baseMaps, overlays, {
   collapsed: false
 }).addTo(map)
