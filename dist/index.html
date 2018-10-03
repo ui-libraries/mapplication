@@ -12,7 +12,7 @@
         <link rel="apple-touch-icon" href="apple-touch-icon.png">
 
         <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.3.4/leaflet.css" />    
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.0.3/leaflet.css" />    
 
         <link rel="stylesheet" href="css/pickr.min.css">
         <link rel="stylesheet" href="css/style.css">
@@ -61,10 +61,13 @@
                 </select>
           </div>         
           <div>
+          <button class="btn btn-raised btn-warning " type="button" id="previewButton">Preview Map</button>
           <button class="btn btn-raised btn-info " type="button" id="downloadButton">Download Map</button>
         </div>
         </div>
       </form>
+      <strong>Live Preview:</strong>
+      <div id="mapid"></div>
       </div>
 
 

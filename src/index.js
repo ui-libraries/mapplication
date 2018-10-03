@@ -8,6 +8,8 @@ window.jQuery = $
 import Pickr from 'pickr-widget'
 import linkifyStr from 'linkifyjs/string'
 import { hasTime } from './lib'
+import * as L from 'leaflet'
+import { buildMap } from './buildmap'
 
 $('.pcr-button').remove();
 
@@ -39,7 +41,7 @@ const defaultPickr = Pickr.create({
   },
   onSave(hsva, instance) {
     defaultColor = hsva.toHEX().toString()
-    opacity = hsva.a
+    defaultOpacity = hsva.a
   }
 })
 
@@ -87,12 +89,14 @@ $.get( "http://s-lib024.lib.uiowa.edu/mapplication/template/style.css", function
 });
 
 let download = document.getElementById("downloadButton")
+let preview = document.getElementById("previewButton")
 let input = document.getElementById("csv-file")
 let display = document.getElementById("display-text")
 let text = null
 
 input.addEventListener("change", addDoc)
 download.addEventListener("click", downloadMap)
+preview.addEventListener("click", previewMap)
 
 function downloadMap() {
   let zip = new JSZip()
@@ -157,6 +161,36 @@ function removeHighlightPicker(geoJsonText) {
   }
 }
 
+function previewMap() {
+  let geoJson = $('#display-text').val()
+  let layerName = $('#layer-name').val()
+  let tileset = $( "#tilesets option:selected" ).text()
+  const mainlayerJson = geoJson
+  const mainlayerName = layerName
+  const timeline = timeline
+  const basemap = tileset
+
+  const markercolor = {
+    radius: 7,
+    fillColor: defaultColor,
+    defaultColor: defaultColor,
+    weight: 1,
+    defaultOpacity: defaultOpacity,
+    fillOpacity: defaultOpacity
+  }
+
+  const timeMarkers = {
+    radius: 7,
+    fillColor: highlightColor,
+    color: highlightColor,
+    weight: 1,
+    opacity: highlightOpacity,
+    fillOpacity: highlightOpacity
+  }
+
+  buildMap(geoJson, tileset, markercolor, timeMarkers, layerName, timeline)
+}
+
 function createUserFile() {
   let geoJson = $('#display-text').val()
   let layerName = $('#layer-name').val()
@@ -170,7 +204,7 @@ function createUserFile() {
     fillColor: '${defaultColor}',
     defaultColor: '${defaultColor}',
     weight: 1,
-    defaultOpacity: '${highlightColor}',
+    defaultOpacity: '${defaultOpacity}',
     fillOpacity: '${defaultOpacity}'
   }
   const timeMarkers = {

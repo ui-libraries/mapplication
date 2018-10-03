@@ -3,14 +3,6 @@ mainlayerJson.features.forEach(function(val) {
   mapFeatures.push(Object.keys(val.properties))
 })
 
-let myIcon = L.icon({
-  iconUrl: 'my-icon.png',
-  iconRetinaUrl: 'my-icon@2x.png',
-  iconSize: [1, 1],
-  iconAnchor: [1, 1],
-  popupAnchor: [-1, -1]
-})
-
 let map = L.map('map', {
   zoom: 2,
   layers: [basemap]
@@ -92,7 +84,6 @@ function displayFeatures(features, layer) {
     let site = L.geoJson(feat, {
       pointToLayer: function(feature, latlng) {
         let marker = L.marker(latLng, {
-          icon: myIcon,
           keyboard: false,
           riseOnHover: true
         })

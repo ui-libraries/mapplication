@@ -128,11 +128,11 @@ const noTimeJson = {
 }
 
 describe('hasTime', () => {
-    it('timeJson is true', () => {
+    it('should return true for timeJson', () => {
         expect(hasTime(timeJson)).to.equal(true)        
     })
 
-    it('noTimeJson is false', () => {
+    it('should return false for noTimeJson', () => {
         expect(hasTime(noTimeJson)).to.equal(false)        
     })
 })
