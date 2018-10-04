@@ -8,6 +8,8 @@ window.jQuery = $
 import Pickr from 'pickr-widget'
 import linkifyStr from 'linkifyjs/string'
 import { hasTime } from './lib'
+import * as L from 'leaflet'
+import { buildMap } from './buildmap'
 
 $('.pcr-button').remove();
 
@@ -39,7 +41,7 @@ const defaultPickr = Pickr.create({
   },
   onSave(hsva, instance) {
     defaultColor = hsva.toHEX().toString()
-    opacity = hsva.a
+    defaultOpacity = hsva.a
   }
 })
 
@@ -70,29 +72,31 @@ const hightlightPickr = Pickr.create({
 
 let configFile, indexJsFile, indexFile, styleFile, userFile
 
-$.get( "http://s-lib024.lib.uiowa.edu/mapplication/template/config.js", function( data ) {
+$.get( "http://mapplication.lib.uiowa.edu/template/config.js", function( data ) {
   configFile = data
 });
 
-$.get( "http://s-lib024.lib.uiowa.edu/mapplication/template/index.js", function( data ) {
+$.get( "http://mapplication.lib.uiowa.edu/template/index.js", function( data ) {
   indexJsFile = data
 });
 
-$.get( "http://s-lib024.lib.uiowa.edu/mapplication/template/index.html", function( data ) {
+$.get( "http://mapplication.lib.uiowa.edu/template/index.html", function( data ) {
   indexFile = data
 });
 
-$.get( "http://s-lib024.lib.uiowa.edu/mapplication/template/style.css", function( data ) {
+$.get( "http://mapplication.lib.uiowa.edu/template/style.css", function( data ) {
   styleFile = data
 });
 
 let download = document.getElementById("downloadButton")
+let preview = document.getElementById("previewButton")
 let input = document.getElementById("csv-file")
 let display = document.getElementById("display-text")
 let text = null
 
 input.addEventListener("change", addDoc)
 download.addEventListener("click", downloadMap)
+preview.addEventListener("click", previewMap)
 
 function downloadMap() {
   let zip = new JSZip()
@@ -170,7 +174,7 @@ function createUserFile() {
     fillColor: '${defaultColor}',
     defaultColor: '${defaultColor}',
     weight: 1,
-    defaultOpacity: '${highlightColor}',
+    defaultOpacity: '${defaultOpacity}',
     fillOpacity: '${defaultOpacity}'
   }
   const timeMarkers = {
