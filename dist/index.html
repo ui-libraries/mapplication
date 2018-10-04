@@ -12,7 +12,7 @@
         <link rel="apple-touch-icon" href="apple-touch-icon.png">
 
         <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.3.4/leaflet.css" />    
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.3.4/leaflet.css" />
 
         <link rel="stylesheet" href="css/pickr.min.css">
         <link rel="stylesheet" href="css/style.css">
@@ -27,46 +27,51 @@
         <div class="well">
           <form class="form">
           <div class="form-group">
-            <h4><label class="control-label" for="inputFile2">Step 1: Upload a CSV file or paste GeoJson data</label>&nbsp<a class="info" href="#">info<span>intentionally barfy style just to make you want to change it</span></a></h4>
-            
+            <h4><label class="control-label" for="inputFile2">Step 1</label><br> <span class="step-description">Upload a CSV file or paste GeoJson data</span>&nbsp<a class="info" href="#"><img src="logo/Info_icon.svg"><span>intentionally barfy style just to make you want to change it</span></a></h4>
+            <div class="below-control-label">
             <input type="file" id="csv-file">
-              <p><strong><label class="control-label" for="display-text">GeoJSON:</label></strong></p>
+            <br>
+              <p><strong><label class="" for="display-text">GeoJSON:</label></strong></p>
               <textarea id="display-text"></textarea>
+            </div>
           </div>
-  
-          <div class="form-group">                
-              <h4><label class="control-label" for="colorpicker">Step 2: Select a default marker color</label></h4>
+
+          <div class="form-group">
+              <h4><label class="control-label" for="colorpicker">Step 2</label><br><span class="step-description">Select a default marker color</span>&nbsp<a class="info" href="#"><img src="logo/Info_icon.svg"><span>intentionally barfy style just to make you want to change it</span></a></h4>
               <div id="colorpicker-default" class="color-picker"></div>
           </div>
 
           <div id="highlight-group"class="form-group">
-              <h4><label class="control-label" id="highlight-label" for="colorpicker">Step 2b: Select a highlight marker color</label></h4>
+              <h4><label class="control-label" id="highlight-label" for="colorpicker">Step 2b</label><br><span class="step-description">Select a highlight marker color</span>&nbsp<a class="info" href="#"><img src="logo/Info_icon.svg"><span>intentionally barfy style just to make you want to change it</span></a></h4>
               <div id="colorpicker-highlight" class="color-picker"></div>
           </div>
 
           <div class="form-group">
-              <h4><label for="layerName">Step 3: Give a descriptive name to your map layer</label></h4>
-              <input type="text" class="form-control" id="layer-name" placeholder="E.g. Homes for Sale">
+              <h4><label class="control-label" for="layerName">Step 3</label><br><span class="step-description">Give a descriptive name to your map layer</span>&nbsp<a class="info" href="#"><img src="logo/Info_icon.svg"><span>intentionally barfy style just to make you want to change it</span></a></h4>
+              <div class="below-control-label">
+                <input type="text" class="form-control" id="layer-name" placeholder="E.g. Homes for Sale">
+            </div>
           </div>
 
           <div class="form-group">
-              <h4><label for="layerName">Step 4: Select map tiles</label></h4>
-              <select id="tilesets">
-                  <option>grayscale</option>
-                  <option>dark</option>
-                  <option>opengeo</option>
-                  <option>stamenmap</option>
-                  <option>surfer_roads</option>
-                  <option>topo</option>
-                </select>
-          </div>         
+              <h4><label class="control-label" for="layerName">Step 4</label><br><span class="step-description">Select map tiles</span>&nbsp<a class="info" href="#"><img src="logo/Info_icon.svg"><span>intentionally barfy style just to make you want to change it</span></a></h4>
+              <div class="below-control-label">
+                <select id="tilesets">
+                    <option>grayscale</option>
+                    <option>dark</option>
+                    <option>opengeo</option>
+                    <option>stamenmap</option>
+                    <option>surfer_roads</option>
+                    <option>topo</option>
+                  </select>
+              </div>
+          </div>
           <div>
-          <button class="btn btn-raised btn-info " type="button" id="downloadButton">Download Map</button>
+          <button class="btn btn-raised btn-info control-label" type="button" id="downloadButton">Download Map</button>
         </div>
         </div>
       </form>
       </div>
-
 
       <script src="js/bundle.js"></script>
 
