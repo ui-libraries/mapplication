@@ -1,21 +1,49 @@
 /* #downloadButton {
   visibility: hidden;
 } */
+@font-face {
+  font-family: "pangram-bold";
+  src: url("../fonts/Pangram-Bold.otf") format("opentype");
+}
+@font-face {
+  font-family: "pangram-medium";
+  src: url("../fonts/Pangram-Medium.otf") format("opentype");
+}
+@font-face {
+  font-family: "pangram-regular";
+  src: url("../fonts/Pangram-Regular.otf") format("opentype");
+}
+.seo-friendly {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+}
+
 .well {
 border:none;
-background-color: '#111111';
+background-color: white;
+-webkit-box-shadow:none;
 }
 
 .form-group {
   margin-top: 40px;
+  background-color: whitesmoke;
+  padding:20px;
 }
-
-.logo {
-  width: 300px;
-}
-
 .control-label {
   margin-top: 15px;
+  background-color: #2d294e;
+  color: white;
+  padding:10px;
+  font-family: "pangram-regular";
+}
+.step-description, .below-control-label{
+  font-family: "pangram-regular";
+  color: #2d294e;
+  margin-left: 10px;
+}
+.logo {
+  width: 300px;
 }
 
 #display-text {
@@ -31,21 +59,10 @@ background-color: '#111111';
   display: none;
 }
 
-/*Ethan*/
-.seo-friendly {
-    position: absolute;
-    top: -9999px;
-    left: -9999px;
-}
-
 #opening-text {
   margin-top:100px;
 }
 
-.navbar-brand img {
- height:25px;
- width:100px;
-}
 
 .navbar-inverse {
  background-image: none;
@@ -63,13 +80,14 @@ background-color: '#111111';
   height: 10em!important;
   width: 350px!important;
   top:0px!important;
-  left:0px!important;
+  left:10px!important;
+  font-family: "pangram-regular";
 }
 
 a.info {
-  font-size: 12px;
+  font-size: 14px;
   position: relative;
-  z-index: 24; 
+  z-index: 24;
   background-color: #ccc;
   color: #000;
   text-decoration: none;
@@ -77,7 +95,7 @@ a.info {
 
 a.info:hover {
   z-index:25;
-  background-color: #ff0
+  background-color: white;
 }
 
 a.info span {
@@ -87,8 +105,118 @@ a.info span {
 a.info:hover span {
   display:block;
   position:absolute;
-  top:2em; left:2em; width:15em;
-  border:1px solid #0cf;
-  background-color:#cff; color:#000;
-  text-align: center
+    top:2em;
+    left:2em;
+  width:15em;
+  border:1px solid #2d294e;
+  background-color:white;
+  color:#2d294e;
+  text-align: center;
+  padding: 5px;
+}
+
+.info img{
+  width: 20px;
+  background-color: whitesmoke;
+  -webkit-box-shadow:none;
+}
+
+.btn-info{
+  border-color: #2d294e!important;
+  background-color:white;
+  color: #2d294e;
+}
+.btn-info:hover{
+  background-color:#2d294e;;
+  color: white;
+}
+
+
+
+@media only screen and (max-width: 399px) {
+
+  .logo {
+    width: 200px;
+  }
+  #display-text {
+    width:150px;
+    height:100px;
+  }
+
+  #layer-name {
+    width: 100px;
+  }
+
+
+  .pcr-app {
+    visibility: visible;
+    opacity: inherit;
+    position: relative;
+    height: 10em!important;
+    width: 200px!important;
+    top:0px!important;
+    left:10px!important;
+    font-family: "pangram-regular";
+  }
+  a.info:hover span {
+    display:block;
+    position:absolute;
+      top:2em;
+      left:-2.5em;
+    width:15em;
+    border:1px solid #2d294e;
+    background-color:white;
+    color:#2d294e;
+    text-align: center;
+    padding: 5px;
+  }
+}
+
+@media only screen and (min-width: 400px) and (max-width: 680px) {
+
+  #display-text {
+    width:250px;
+    height:100px;
+  }
+
+  #layer-name {
+    width: 200px;
+  }
+
+  .pcr-app {
+    visibility: visible;
+    opacity: inherit;
+    position: relative;
+    height: 10em!important;
+    width: 250px!important;
+    top:0px!important;
+    left:10px!important;
+    font-family: "pangram-regular";
+  }
+  a.info:hover span {
+    display:inline ;
+    position:absolute;
+      top:2em;
+      left:-150px;
+    width:15em;
+    border:1px solid #2d294e;
+    background-color:white;
+    color:#2d294e;
+    text-align: center;
+    padding: 5px;
+  }
+}
+
+
+@media only screen
+and (min-device-width : 768px)
+and (max-device-width : 1024px)
+and (orientation : landscape)
+and (-webkit-min-device-pixel-ratio: 2) {
+}
+
+@media all and (-ms-high-contrast: none),
+       (-ms-high-contrast: active) {
+    /*IE10+ CSS styles go here*/
+
 }
