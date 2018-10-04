@@ -9,7 +9,6 @@ import Pickr from 'pickr-widget'
 import linkifyStr from 'linkifyjs/string'
 import { hasTime } from './lib'
 import * as L from 'leaflet'
-import { buildMap } from './buildmap'
 
 $('.pcr-button').remove();
 
