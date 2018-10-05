@@ -170,7 +170,7 @@ function createUserFile() {
   const markercolor = {
     radius: 7,
     fillColor: '${defaultColor}',
-    defaultColor: '${defaultColor}',
+    color: '${defaultColor}',
     weight: 1,
     defaultOpacity: '${defaultOpacity}',
     fillOpacity: '${defaultOpacity}'
