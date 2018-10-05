@@ -185,6 +185,10 @@ a.info:hover span {
     height:100px;
   }
 
+  .logo {
+    width: 350px;
+  }
+
   #layer-name {
     width: 200px;
   }
