@@ -24,9 +24,9 @@ h4 {
 }
 
 .well {
-border:none;
+border: none;
+padding: 0px;
 background-color: white;
--webkit-box-shadow:none;
 }
 
 .form-group {
@@ -49,6 +49,7 @@ background-color: white;
 
 .logo {
   width: 500px;
+  margin-bottom: 10px;
 }
 
 #display-text {
