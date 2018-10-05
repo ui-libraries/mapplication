@@ -156,7 +156,7 @@ function wrapImageLinks(geoJsonText) {
 
 function removeHighlightPicker(geoJsonText) {
   if (hasTime(geoJsonText) === true) {
-    $('#highlight-group').css("display", "inline")
+    $('#highlight-group').css("display", "block")
   }
 }
 
