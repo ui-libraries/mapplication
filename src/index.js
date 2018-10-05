@@ -95,7 +95,6 @@ let text = null
 
 input.addEventListener("change", addDoc)
 download.addEventListener("click", downloadMap)
-preview.addEventListener("click", previewMap)
 
 function downloadMap() {
   let zip = new JSZip()
