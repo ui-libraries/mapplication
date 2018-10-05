@@ -1,5 +1,5 @@
-# skeleton
-A barebones starter project for modern javascript development
+# Mapplication
+An application for creating leaflet maps based on data in a CSV format
 
 babel + webpack + mocha + chai + documentationjs
 
