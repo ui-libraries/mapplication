@@ -1,5 +1,5 @@
-# Mapplication
-An application for creating leaflet maps based on data in a CSV format
+# skeleton
+A barebones starter project for modern javascript development
 
 babel + webpack + mocha + chai + documentationjs
 
