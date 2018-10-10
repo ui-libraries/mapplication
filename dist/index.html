@@ -34,7 +34,12 @@
         <div class="well">
           <form class="form">
           <div class="form-group">
-            <h4><label class="control-label" for="inputFile2">Step 1</label><br> <span class="step-description">Upload a CSV file or paste GeoJson data</span>&nbsp<a class="info" href="#"><img src="logo/info_icon.svg"><span>placeholder text that will eventually be a helpful tooltip</span></a></h4>
+            <h4><label class="control-label" for="inputFile2">Step 1</label><br> <span class="step-description">Upload a CSV file or paste GeoJson data</span>&nbsp<a class="info" href="#"><img src="logo/info_icon.svg">
+              <span> <ul>
+                <li>Your CSV should include fields for latitude, longitude, in decimal degrees. These fields should ideally be named “latitude” and “longitude”</li>
+                     <li>Ensure that any time data are stored in a field called “time” - you also need to sort your time field (by ascending order) before uploading</li>
+                    </ul>
+          </span></a></h4>
             <div class="below-control-label">
             <input type="file" id="csv-file">
             <br>
@@ -44,17 +49,18 @@
           </div>
 
           <div class="form-group">
-              <h4><label class="control-label" for="colorpicker">Step 2</label><br><span class="step-description">Select a default marker color</span>&nbsp<a class="info" href="#"><img src="logo/info_icon.svg"><span>placeholder text that will eventually be a helpful tooltip</span></a></h4>
+              <h4><label class="control-label" for="colorpicker">Step 2</label><br><span class="step-description">Select a default marker color</span>&nbsp<a class="info" href="#"><img src="logo/info_icon.svg"><span>
+                <ul><li>Select a color for your markers and click “Save” to store it as your preferred marker color. If you have a time field, a second color selector will appear and you will be picking the color of those features active in the user-selected time range</li></ul></span></a></h4>
               <div id="colorpicker-default" class="color-picker"></div>
           </div>
 
           <div id="highlight-group"class="form-group">
-              <h4><label class="control-label" id="highlight-label" for="colorpicker">Step 2b</label><br><span class="step-description">Select a highlight marker color</span>&nbsp<a class="info" href="#"><img src="logo/info_icon.svg"><span>placeholder text that will eventually be a helpful tooltip</span></a></h4>
+              <h4><label class="control-label" id="highlight-label" for="colorpicker">Step 2b</label><br><span class="step-description">Select a highlight marker color</span></h4>
               <div id="colorpicker-highlight" class="color-picker"></div>
           </div>
 
           <div class="form-group">
-              <h4><label class="control-label" for="layerName">Step 3</label><br><span class="step-description">Give a descriptive name to your map layer</span>&nbsp<a class="info" href="#"><img src="logo/info_icon.svg"><span>placeholder text that will eventually be a helpful tooltip</span></a></h4>
+              <h4><label class="control-label" for="layerName">Step 3</label><br><span class="step-description">Give a descriptive name to your map layer</span>&nbsp<a class="info" href="#"><img src="logo/info_icon.svg"><span><ul><li>This is where you can name the layer in the legend/layer list</li></ul></span></a></h4>
               <div class="below-control-label">
                 <input type="text" class="form-control" id="layer-name" placeholder="E.g. Homes for Sale">
             </div>
@@ -76,20 +82,21 @@
           <div>
           <button class="btn btn-raised btn-info control-label" type="button" id="downloadButton">Download Map</button>
         </div>
-        </div>
       </form>
-      </div>
+    </div><!--End of Well -->
+      
+    </div><!--End of Container-->
 
       <script src="js/bundle.js"></script>
 
-      <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+      <!-- Global site tag (gtag.js) - Google Analytics -->
+      <script async src="https://www.googletagmanager.com/gtag/js?id=UA-61639511-29"></script>
       <script>
-          (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
-          function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
-          e=o.createElement(i);r=o.getElementsByTagName(i)[0];
-          e.src='//www.google-analytics.com/analytics.js';
-          r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
-          ga('create','UA-XXXXX-X','auto');ga('send','pageview');
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-61639511-29');
       </script>
     </body>
 </html>
