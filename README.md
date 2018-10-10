@@ -1,5 +1,5 @@
 # mapplication
-A web application that builds web map applications.
+A web application that builds web map applications for Leaflet.
 
 babel + webpack + mocha + chai + documentationjs
 
