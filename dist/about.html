@@ -1,0 +1,70 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang=""> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Mapplication</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="apple-touch-icon" href="favicon-32x32.png">
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+        <link rel="manifest" href="/site.webmanifest">
+        <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+        <meta name="msapplication-TileColor" content="#da532c">
+        <meta name="theme-color" content="#ffffff">
+
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.3.4/leaflet.css" />
+
+        <link rel="stylesheet" href="css/pickr.min.css">
+        <link rel="stylesheet" href="css/style.css">
+
+    </head>
+    <body>
+        <!--[if lt IE 8]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+      <div class="container">
+        <div class="well">
+        <a href="/"><img class="logo" src="logo/Mapplication_Wordmark_Color.svg"></a>
+        <h2>Mapplication help</h2>
+          <h3>What is a CSV file?</h3>
+          CSV stands for “comma separated values.” It is just a simplified, text-based version of the stuff you see in spreadsheets, where values are separated by commas instead of by rows. You can derive CSV files from spreadsheet software (e.g. Microsoft Excel) by clicking “Save As…” and then changing the save format to “comma separated values.”
+
+          <h3>Where do I get GeoJSON data?</h3>
+          Mapplication will automatically convert your CSV file with coordinates into valid geoJSON data. But if you want to do it yourself or use shapes rather than points, you will need to develop your data somewhere else first before. Most GIS desktop software has tools to convert layers to valid geoJSON format. However, you can also use tools like OGRE (<a href="http://ogre.adc4gis.com/">http://ogre.adc4gis.com/</a>) or GeoJSON.IO (<a href="http://geojson.io">http://geojson.io</a>) to create or manipulate geoJSON data.
+
+          <h3>Where do I get latitude and longitude if I don’t have that?</h3>
+          For files that list addresses or cities, use a geocoder. There are many online. Texas A&M Geoservices has developed a very good geocoding service for US addresses and places, and their page has numerous links to other geocoding tools that you can use. This is a good place to start for those new to geocoding:
+          <a href="http://geoservices.tamu.edu/Services/Geocode/">http://geoservices.tamu.edu/Services/Geocode/</a>
+          World geocoders
+          <a href="http://www.gpsvisualizer.com/geocoder/">http://www.gpsvisualizer.com/geocoder/</a>
+
+          Advanced users who want to do batch geocoding might want to consider using OpenRefine for this process, <a href="https://github.com/OpenRefine/OpenRefine/wiki/Geocoding">https://github.com/OpenRefine/OpenRefine/wiki/Geocoding</a>
+          <br>
+          <img src="images/example_text.png">
+          <br>
+          <h3>Why do I have to manually sort my time field?</h3>
+          We’ve done this for multiple reasons.
+          First, data in the humanities are not always specific, especially with time properties. You may have, for example, an exact date (e.g. 10-15-2018) and “fuzzy” date (e.g. 10-XX-2018) in the same file. We cannot decide for you the order that these should appear. If you do the sorting before uploading, you CAN make those decisions, because our slider will handle them in the order you provide them. Likewise, if you change date formats in your field (e.g. 10/15/2018 and 2018-10-15), it can complicate automated ordering tasks. Therefore, we have decided not to include any functions that would try to automatically arrange your dataset.
+        </div>
+      </div>
+
+      <script src="js/bundle.js"></script>
+
+      <!-- Global site tag (gtag.js) - Google Analytics -->
+      <script async src="https://www.googletagmanager.com/gtag/js?id=UA-61639511-29"></script>
+      <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-61639511-29');
+      </script>
+    </body>
+</html>
