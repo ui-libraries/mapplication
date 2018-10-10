@@ -1,5 +1,5 @@
-# skeleton
-A barebones starter project for modern javascript development
+# mapplication
+A web application that builds web map applications.
 
 babel + webpack + mocha + chai + documentationjs
 
