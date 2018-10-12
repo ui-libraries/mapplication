@@ -141,17 +141,39 @@ a.info span{
   color: white;
 }
 
-footer{
+#footer{
   width: auto;
   height: 200px;
   background-color: #2d294e;
+  height: 225px;
+  margin-top: 50px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 50px;
 }
-footer img{
-  width: 100px;
+#lib_logo{
+  width: 115px;
 }
-.social_media img{
-  width: 25px;
+#studio_logo{
+  width:  250px;
+  margin-top: 40px;
+}
+#footer .menu-item{
+  text-align: center;
+  margin-top: 60px;
+  font-size: 25px;
+  font-family: "pangram-regular";
+}
+#footer .menu-item a{
+  color: white;
+}
+#footer .social_media{
   float: right;
+}
+#footer .social_media img{
+  width: 30px;
+  float: right;
+  margin:10px;
 }
 
 @media only screen and (max-width: 399px) {
@@ -190,6 +212,9 @@ footer img{
     color:#2d294e;
     text-align: center;
     padding: 5px;
+  }
+  #footer{
+    display: none;
   }
 }
 
@@ -230,6 +255,45 @@ footer img{
     color:#2d294e;
     text-align: center;
     padding: 5px;
+  }
+
+
+  #footer{
+    display: none;
+  }
+}
+
+
+@media only screen and (min-width: 681px) and (max-width: 767px) {
+  #footer{
+    display: none;
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  #lib_logo{
+    width: 120px;
+  }
+  #studio_logo{
+    width:  180px;
+    margin-top:25px;
+  }
+  #footer .menu-item{
+    text-align: center;
+    margin-top: 30px;
+    font-size: 22px;
+    font-family: "pangram-regular";
+  }
+  #footer .menu-item a{
+    color: white;
+  }
+  #footer .social_media{
+    float: right;
+  }
+  #footer .social_media img{
+    width: 30px;
+    float: right;
+    margin:10px;
   }
 }
 
